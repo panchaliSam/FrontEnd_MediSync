@@ -10,7 +10,7 @@ import { CustomerRecordPieChart } from './components/customerRecordPieChart';
 import { SeasonalDemandBarChart} from './components/customerDemandBarChart';
 import { SeasonalDemandPieChart } from './components/customerDemandPieChart';
 
-// import Login from './components/login'; 
+import Login from './components/login'; 
 import Register from './components/register'
 
 function App() {
@@ -22,12 +22,9 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                {/* Public Routes */}
-                {/* <Route path="/" element={<Navigate to="/login" />} />
-                <Route path="/login" element={<Login />} /> */}
-
-                <Route path="/" element={<Navigate to="/register" />} />
+            <Route path="/" element={<Navigate to="/login" />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} /> {/* Add the Login route */}
 
                 {/* Protected Routes */}
                 <Route
