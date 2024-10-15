@@ -1,10 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 // import { MultiLevelSidebar } from './components/sideNavBar';
 import { Navbar } from './components/navBar';
-import { PatientHome }  from './components/patientHome'
-
+import { PatientHome } from './components/patientHome';
 import Login from './components/login'; 
-import Register from './components/register'
+import Register from './components/register';
 
 function App() {
     // Function to check if the user is authenticated
@@ -15,7 +14,7 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-            <Route path="/" element={<Navigate to="/login" />} />
+                <Route path="/" element={<Navigate to="/login" />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} /> {/* Add the Login route */}
 
@@ -33,15 +32,10 @@ function App() {
                                 <Routes>
                                     <Route
                                         path="home"
-                                        element={
-                                            <>
-                                                <PatientHome />
-
-                                            </>
-                                        }
+                                        element={<PatientHome />}
                                     />
                                     <Route
-                                        path="customer-segmentation"
+                                        path="make-appointments"
                                         element={
                                             <>
                                                 {/* <CustomerRecord />
@@ -49,22 +43,36 @@ function App() {
                                                 <CustomerRecordBarChart />
                                                 <br/>
                                                 <CustomerRecordPieChart /> */}
-                                            </>}
+                                            </>
+                                        }
                                     />
                                     <Route
-                                        path="customer-demand-analysis"
+                                        path="patient-history"
                                         element={
-                                        <> 
-                                        {/* <SeasonalDemand /> 
-                                        <br/>
-                                        <SeasonalDemandBarChart />
-                                        <br/>
-                                        <SeasonalDemandPieChart/> */}
-                                        </>}
+                                            <> 
+                                                {/* <SeasonalDemand /> 
+                                                <br/>
+                                                <SeasonalDemandBarChart />
+                                                <br/>
+                                                <SeasonalDemandPieChart/> */}
+                                            </>
+                                        }
+                                    />
+                                    <Route
+                                        path="my-appointments" // Fixed the typo here
+                                        element={
+                                            <> 
+                                                {/* <SeasonalDemand /> 
+                                                <br/>
+                                                <SeasonalDemandBarChart />
+                                                <br/>
+                                                <SeasonalDemandPieChart/> */}
+                                            </>
+                                        }
                                     />
                                     <Route
                                         path="*"
-                                        element={<Navigate to="/dashboard/sales-forecasting" />}
+                                        element={<Navigate to="/dashboard/home" />} // Added this line correctly
                                     />
                                 </Routes>
                             </main>

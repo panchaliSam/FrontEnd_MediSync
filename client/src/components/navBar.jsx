@@ -41,7 +41,7 @@ export function Navbar() {
         </div>
 
         {/* Desktop Menu */}
-        <div className={`flex items-center space-x-12 ${open ? 'flex' : 'hidden'} md:flex md:space-x-12`}>
+        <div className={`hidden md:flex items-center space-x-12 ${open ? 'flex' : 'hidden'}`}>
           {/* Dropdown for Home */}
           <div className="relative">
             <button
@@ -90,28 +90,28 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="flex flex-col items-center md:hidden bg-gray-200">
-          <Link to="/dashboard/home" className="block px-4 py-2 text-black hover:bg-gray-100">
+        <div className="flex flex-col items-center md:hidden bg-gray-200 p-4">
+          <Link to="/dashboard/home" className="block w-full text-left px-4 py-2 text-black hover:bg-gray-100">
             Make Appointments
           </Link>
           <Link
             to="/dashboard/customer-segmentation"
-            className="block px-4 py-2 text-black hover:bg-gray-100"
+            className="block w-full text-left px-4 py-2 text-black hover:bg-gray-100"
           >
             Patient History
           </Link>
           <Link
             to="/dashboard/customer-demand-analysis"
-            className="block px-4 py-2 text-black hover:bg-gray-100"
+            className="block w-full text-left px-4 py-2 text-black hover:bg-gray-100"
           >
             My Appointments
           </Link>
-          <Link to="/profile" className="block px-4 py-2 text-black hover:bg-gray-100">
+          <Link to="/profile" className="block w-full text-left px-4 py-2 text-black hover:bg-gray-100">
             Profile
           </Link>
           <button
             onClick={handleLogout}
-            className="bg-black text-white px-4 py-2 rounded-md transition hover:bg-gray-700"
+            className="bg-black text-white w-full text-left px-4 py-2 rounded-md transition hover:bg-gray-700"
           >
             Log Out
           </button>
