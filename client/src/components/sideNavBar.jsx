@@ -65,7 +65,7 @@ export function MultiLevelSidebar() {
             </ListItem>
             <AccordionBody className="py-1">
               <List className="p-0">
-                <Link to="/dashboard/sales-forecasting" className="block">
+                <Link to="/dashboard/home" className="block">
                   <ListItem>
                     <ListItemPrefix>
                       <CalendarIcon className="h-5 w-5" /> {/* Icon for Make Appointments */}

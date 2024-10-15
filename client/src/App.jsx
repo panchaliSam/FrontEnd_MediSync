@@ -1,14 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { MultiLevelSidebar } from './components/sideNavBar';
-import { SalesRecord } from './components/salesRecord';
-import { CustomerRecord } from './components/customerRecord';
-import { SalesRecordBarChart } from './components/salesRecordBarChart';
-import { SeasonalDemand } from './components/customerDemand';
-import { SalesRecordPieChart } from './components/salesRecordPieChart';
-import { CustomerRecordBarChart } from './components/customerRecordBarChart';
-import { CustomerRecordPieChart } from './components/customerRecordPieChart';
-import { SeasonalDemandBarChart} from './components/customerDemandBarChart';
-import { SeasonalDemandPieChart } from './components/customerDemandPieChart';
+import { PatientHome }  from './components/patientHome'
 
 import Login from './components/login'; 
 import Register from './components/register'
@@ -38,14 +30,11 @@ function App() {
                             <main className="flex-1 p-4 overflow-auto">
                                 <Routes>
                                     <Route
-                                        path="sales-forecasting"
+                                        path="home"
                                         element={
                                             <>
-                                                <SalesRecord />
-                                                <br />
-                                                <SalesRecordBarChart />
-                                                <br />
-                                                <SalesRecordPieChart />
+                                                <PatientHome />
+
                                             </>
                                         }
                                     />
@@ -53,22 +42,22 @@ function App() {
                                         path="customer-segmentation"
                                         element={
                                             <>
-                                                <CustomerRecord />
+                                                {/* <CustomerRecord />
                                                 <br />
                                                 <CustomerRecordBarChart />
                                                 <br/>
-                                                <CustomerRecordPieChart />
+                                                <CustomerRecordPieChart /> */}
                                             </>}
                                     />
                                     <Route
                                         path="customer-demand-analysis"
                                         element={
                                         <> 
-                                        <SeasonalDemand /> 
+                                        {/* <SeasonalDemand /> 
                                         <br/>
                                         <SeasonalDemandBarChart />
                                         <br/>
-                                        <SeasonalDemandPieChart/>
+                                        <SeasonalDemandPieChart/> */}
                                         </>}
                                     />
                                     <Route

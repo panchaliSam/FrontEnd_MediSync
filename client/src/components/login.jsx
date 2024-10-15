@@ -48,7 +48,7 @@ export default function Login() {
 
             const { token } = response.data;
             localStorage.setItem('token', token);
-            navigate('/dashboard');
+            navigate('/dashboard/home');
         } catch (error) {
             setError(error.response?.data?.error || "Login Unsuccessful!");
         }
