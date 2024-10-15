@@ -1,25 +1,25 @@
 import React from "react";
-import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Link, useNavigate } from 'react-router-dom'; 
 import {
   Card,
   Typography,
   List,
   ListItem,
   ListItemPrefix,
-  ListItemSuffix,
-  Chip,
   Accordion,
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
 import {
-  PresentationChartBarIcon,
+  HomeIcon, 
   UserCircleIcon,
-  Cog6ToothIcon,
-  InboxIcon,
   PowerIcon,
+  CalendarIcon,           // Icon for Make Appointments
+  ClipboardDocumentIcon,   // Icon for Patient History
+  ClockIcon,               // Icon for My Appointments
+  ChevronRightIcon,
+  ChevronDownIcon,
 } from "@heroicons/react/24/solid";
-import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export function MultiLevelSidebar() {
   const [open, setOpen] = React.useState(0);
@@ -30,18 +30,17 @@ export function MultiLevelSidebar() {
   };
 
   const handleLogout = () => {
-    
     localStorage.removeItem('token');
-  
     navigate('/login');
   };
 
   return (
     <div className="h-screen flex">
-      <Card className="h-full w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
+      {/* Added rounded-none to remove border radius */}
+      <Card className="h-full w-full max-w-[20rem] p-4 bg-gray-200 text-white shadow-xl shadow-blue-gray-900/5 rounded-none">
         <div className="mb-2 p-4">
-          <Typography variant="h5" color="blue-gray">
-            Sidebar
+          <Typography variant="h5" className="text-center text-blue-600 font-bold mb-4 text-4xl"> 
+            MediSync
           </Typography>
         </div>
         <List>
@@ -57,76 +56,53 @@ export function MultiLevelSidebar() {
             <ListItem className="p-0" selected={open === 1}>
               <AccordionHeader onClick={() => handleOpen(1)} className="border-b-0 p-3">
                 <ListItemPrefix>
-                  <PresentationChartBarIcon className="h-5 w-5" />
+                  <HomeIcon className="h-5 w-5" /> {/* Home icon */}
                 </ListItemPrefix>
-                <Typography color="blue-gray" className="mr-auto font-normal">
-                  Dashboard
+                <Typography color="black" className="mr-auto font-normal"> {/* Changed color to white */}
+                  Home
                 </Typography>
               </AccordionHeader>
             </ListItem>
             <AccordionBody className="py-1">
               <List className="p-0">
-                <Link to="/dashboard/sales-forecasting" className="block">
+                <Link to="/dashboard/home" className="block">
                   <ListItem>
                     <ListItemPrefix>
-                      <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                      <CalendarIcon className="h-5 w-5" /> {/* Icon for Make Appointments */}
                     </ListItemPrefix>
-                    Sales Forecasting
+                    <Typography color="black">Make Appointments</Typography> {/* Changed color to white */}
                   </ListItem>
                 </Link>
                 <Link to="/dashboard/customer-segmentation" className="block">
                   <ListItem>
                     <ListItemPrefix>
-                      <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                      <ClipboardDocumentIcon className="h-5 w-5" /> {/* Icon for Patient History */}
                     </ListItemPrefix>
-                    Customer Segmentation
+                    <Typography color="black">Patient History</Typography> {/* Changed color to white */}
                   </ListItem>
                 </Link>
                 <Link to="/dashboard/customer-demand-analysis" className="block">
                   <ListItem>
                     <ListItemPrefix>
-                      <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
+                      <ClockIcon className="h-5 w-5" /> {/* Icon for My Appointments */}
                     </ListItemPrefix>
-                    Customer Demand Analysis
-                  </ListItem>
-                </Link>
-                <Link to="/dashboard/customer-demand" className="block">
-                  <ListItem>                
-                    <ListItemPrefix>
-                      <ChevronRightIcon strokeWidth={3} className="h-3 w-5" />
-                    </ListItemPrefix>
-                    Customer Correlation
+                    <Typography color="black">My Appointments</Typography> {/* Changed color to white */}
                   </ListItem>
                 </Link>
               </List>
             </AccordionBody>
           </Accordion>
-          {/* <ListItem>
-            <ListItemPrefix>
-              <InboxIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Inbox
-            <ListItemSuffix>
-              <Chip value="14" size="sm" variant="ghost" color="blue-gray" className="rounded-full" />
-            </ListItemSuffix>
-          </ListItem> */}
-          {/* <ListItem>
+          <ListItem>
             <ListItemPrefix>
               <UserCircleIcon className="h-5 w-5" />
             </ListItemPrefix>
-            Profile
-          </ListItem> */}
-          {/* <ListItem>
-            <ListItemPrefix>
-              <Cog6ToothIcon className="h-5 w-5" />
-            </ListItemPrefix>
-            Settings
-          </ListItem> */}
+            <Typography color="black">Profile</Typography> {/* Changed color to white */}
+          </ListItem>
           <ListItem button onClick={handleLogout}>
             <ListItemPrefix>
               <PowerIcon className="h-5 w-5" />
             </ListItemPrefix>
-            Log Out
+            <Typography color="black">Log Out</Typography> {/* Changed color to white */}
           </ListItem>
         </List>
       </Card>

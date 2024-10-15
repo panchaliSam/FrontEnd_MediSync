@@ -1,17 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { MultiLevelSidebar } from './components/sideNavBar';
-import { SalesRecord } from './components/salesRecord';
-import { CustomerRecord } from './components/customerRecord';
-import { SalesRecordBarChart } from './components/salesRecordBarChart';
-import { SeasonalDemand } from './components/customerDemand';
-import { SalesRecordPieChart } from './components/salesRecordPieChart';
-import { CustomerRecordBarChart } from './components/customerRecordBarChart';
-import { CustomerRecordPieChart } from './components/customerRecordPieChart';
-import { SeasonalDemandBarChart} from './components/customerDemandBarChart';
-import { SeasonalDemandPieChart } from './components/customerDemandPieChart';
-
-// import Login from './components/login'; 
-import Register from './components/register'
+// import { MultiLevelSidebar } from './components/sideNavBar';
+import { Navbar } from './components/navBar';
+import { PatientHome } from './components/patientHome';
+import Login from './components/login'; 
+import Register from './components/register';
 
 function App() {
     // Function to check if the user is authenticated
@@ -22,12 +14,9 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                {/* Public Routes */}
-                {/* <Route path="/" element={<Navigate to="/login" />} />
-                <Route path="/login" element={<Login />} /> */}
-
-                <Route path="/" element={<Navigate to="/register" />} />
+                <Route path="/" element={<Navigate to="/login" />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} /> {/* Add the Login route */}
 
                 {/* Protected Routes */}
                 <Route
@@ -35,48 +24,55 @@ function App() {
                     element={isAuthenticated() ? (
                         <div className="flex h-screen">
                             {/* Sidebar Component */}
-                            <MultiLevelSidebar className="w-64 bg-gray-100" />
+                            {/* <MultiLevelSidebar className="w-64 bg-gray-100" /> */}
+                            <Navbar/>
 
                             {/* Main Content Area */}
                             <main className="flex-1 p-4 overflow-auto">
                                 <Routes>
                                     <Route
-                                        path="sales-forecasting"
+                                        path="home"
+                                        element={<PatientHome />}
+                                    />
+                                    <Route
+                                        path="make-appointments"
                                         element={
                                             <>
-                                                <SalesRecord />
+                                                {/* <CustomerRecord />
                                                 <br />
-                                                <SalesRecordBarChart />
-                                                <br />
-                                                <SalesRecordPieChart />
+                                                <CustomerRecordBarChart />
+                                                <br/>
+                                                <CustomerRecordPieChart /> */}
                                             </>
                                         }
                                     />
                                     <Route
-                                        path="customer-segmentation"
+                                        path="patient-history"
                                         element={
-                                            <>
-                                                <CustomerRecord />
-                                                <br />
-                                                <CustomerRecordBarChart />
+                                            <> 
+                                                {/* <SeasonalDemand /> 
                                                 <br/>
-                                                <CustomerRecordPieChart />
-                                            </>}
+                                                <SeasonalDemandBarChart />
+                                                <br/>
+                                                <SeasonalDemandPieChart/> */}
+                                            </>
+                                        }
                                     />
                                     <Route
-                                        path="customer-demand-analysis"
+                                        path="my-appointments" // Fixed the typo here
                                         element={
-                                        <> 
-                                        <SeasonalDemand /> 
-                                        <br/>
-                                        <SeasonalDemandBarChart />
-                                        <br/>
-                                        <SeasonalDemandPieChart/>
-                                        </>}
+                                            <> 
+                                                {/* <SeasonalDemand /> 
+                                                <br/>
+                                                <SeasonalDemandBarChart />
+                                                <br/>
+                                                <SeasonalDemandPieChart/> */}
+                                            </>
+                                        }
                                     />
                                     <Route
                                         path="*"
-                                        element={<Navigate to="/dashboard/sales-forecasting" />}
+                                        element={<Navigate to="/dashboard/home" />} // Added this line correctly
                                     />
                                 </Routes>
                             </main>
