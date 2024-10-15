@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { MultiLevelSidebar } from './components/sideNavBar';
+// import { MultiLevelSidebar } from './components/sideNavBar';
 import { PatientHome }  from './components/patientHome'
 
 import Login from './components/login'; 
@@ -24,7 +24,7 @@ function App() {
                     element={isAuthenticated() ? (
                         <div className="flex h-screen">
                             {/* Sidebar Component */}
-                            <MultiLevelSidebar className="w-64 bg-gray-100" />
+                            {/* <MultiLevelSidebar className="w-64 bg-gray-100" /> */}
 
                             {/* Main Content Area */}
                             <main className="flex-1 p-4 overflow-auto">

@@ -36,25 +36,25 @@ export function Navbar() {  // Ensure the function name is 'Navbar'
               Home
             </Button>
           </Link>
-          <Link to="/dashboard/home">
+          <Link to="">
             <Button variant="text" color="gray">
               <CalendarIcon className="h-5 w-5 mr-1" />
               Make Appointments
             </Button>
           </Link>
-          <Link to="/dashboard/customer-segmentation">
+          <Link to="">
             <Button variant="text" color="gray">
               <ClipboardDocumentIcon className="h-5 w-5 mr-1" />
               Patient History
             </Button>
           </Link>
-          <Link to="/dashboard/customer-demand-analysis">
+          <Link to="">
             <Button variant="text" color="gray">
               <ClockIcon className="h-5 w-5 mr-1" />
               My Appointments
             </Button>
           </Link>
-          <Link to="/dashboard/profile">
+          <Link to="">
             <Button variant="text" color="gray">
               <UserCircleIcon className="h-5 w-5 mr-1" />
               Profile
