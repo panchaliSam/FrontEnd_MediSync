@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 // import { MultiLevelSidebar } from './components/sideNavBar';
+import { Navbar } from './components/navBar';
 import { PatientHome }  from './components/patientHome'
 
 import Login from './components/login'; 
@@ -25,6 +26,7 @@ function App() {
                         <div className="flex h-screen">
                             {/* Sidebar Component */}
                             {/* <MultiLevelSidebar className="w-64 bg-gray-100" /> */}
+                            <Navbar/>
 
                             {/* Main Content Area */}
                             <main className="flex-1 p-4 overflow-auto">
