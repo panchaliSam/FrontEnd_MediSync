@@ -29,7 +29,7 @@ export function PatientHome() {
       {/* Card Section */}
       <div className="flex flex-col items-center justify-center space-y-4 md:flex-row md:space-x-4 md:space-y-0">
         {/* Card for Make Appointments */}
-        <Link to="/dashboard/make-appointments" className="w-full max-w-xs">
+        <Link to="/dashboard/home/make-appointments" className="w-full max-w-xs">
           <Card className="h-60 bg-blue-500 text-white hover:bg-blue-600 cursor-pointer">
             <CardBody className="flex flex-col items-center justify-center h-full p-6">
               <CalendarIcon className="h-12 w-12 mb-2" />
