@@ -4,6 +4,7 @@ import { Navbar } from './components/navBar';
 import { PatientHome } from './components/patientHome';
 import Login from './components/login'; 
 import Register from './components/register';
+import PatientRegister from './components/patientAdd';
 
 function App() {
     // Function to check if the user is authenticated
@@ -16,6 +17,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Navigate to="/login" />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/register-patient" element={<PatientRegister />} />
                 <Route path="/login" element={<Login />} /> {/* Add the Login route */}
 
                 {/* Protected Routes */}

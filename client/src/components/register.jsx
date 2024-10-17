@@ -51,8 +51,8 @@ export default function Register() {
                 }
             });
 
-            alert("Registration successful! Please log in."); // Show success message
-            navigate('/login'); // Navigate to login page after successful registration
+            alert("Registration successful! Please enter patient details."); 
+            navigate('/register-patient'); 
         } catch (error) {
             setError(error.response?.data?.error || "Registration Unsuccessful!");
         }
