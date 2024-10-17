@@ -41,7 +41,6 @@ export default function Register() {
         }
 
         try {
-            // Send data to the server as JSON in the request body
             const response = await axios.post(`http://localhost:8080/CSSE_MediSync/users?action=register`, {
                 username: registerData.username,
                 password: registerData.password
@@ -50,9 +49,12 @@ export default function Register() {
                     'Content-Type': 'application/json'
                 }
             });
-
-            alert("Registration successful! Please log in."); // Show success message
-            navigate('/login'); // Navigate to login page after successful registration
+    
+            // Store user ID in local storage
+            localStorage.setItem("userId", response.data.userId); // Assuming the user ID is returned in response.data.userId
+    
+            alert("Registration successful! Please log in.");
+            navigate('/register-patient'); // Navigate to patient registration page after successful registration
         } catch (error) {
             setError(error.response?.data?.error || "Registration Unsuccessful!");
         }

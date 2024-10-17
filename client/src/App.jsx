@@ -1,12 +1,13 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-// import { MultiLevelSidebar } from './components/sideNavBar';
 import { Navbar } from './components/navBar';
 import { PatientHome } from './components/patientHome';
 import Login from './components/login'; 
 import Register from './components/register';
+import PatientRegister from './components/patientAdd';
+import PatientProfile from './components/patientProfile';
+import MakeAppointment from './components/patientMyAppointments';
 
 function App() {
-    // Function to check if the user is authenticated
     const isAuthenticated = () => {
         return !!localStorage.getItem('token'); 
     };
@@ -16,64 +17,25 @@ function App() {
             <Routes>
                 <Route path="/" element={<Navigate to="/login" />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login />} /> {/* Add the Login route */}
+                <Route path="/register-patient" element={<PatientRegister />} />
+                <Route path="/login" element={<Login />} />
 
                 {/* Protected Routes */}
                 <Route
                     path="/dashboard/*"
                     element={isAuthenticated() ? (
                         <div className="flex h-screen">
-                            {/* Sidebar Component */}
-                            {/* <MultiLevelSidebar className="w-64 bg-gray-100" /> */}
                             <Navbar/>
 
                             {/* Main Content Area */}
                             <main className="flex-1 p-4 overflow-auto">
                                 <Routes>
-                                    <Route
-                                        path="home"
-                                        element={<PatientHome />}
-                                    />
-                                    <Route
-                                        path="make-appointments"
-                                        element={
-                                            <>
-                                                {/* <CustomerRecord />
-                                                <br />
-                                                <CustomerRecordBarChart />
-                                                <br/>
-                                                <CustomerRecordPieChart /> */}
-                                            </>
-                                        }
-                                    />
-                                    <Route
-                                        path="patient-history"
-                                        element={
-                                            <> 
-                                                {/* <SeasonalDemand /> 
-                                                <br/>
-                                                <SeasonalDemandBarChart />
-                                                <br/>
-                                                <SeasonalDemandPieChart/> */}
-                                            </>
-                                        }
-                                    />
-                                    <Route
-                                        path="my-appointments" // Fixed the typo here
-                                        element={
-                                            <> 
-                                                {/* <SeasonalDemand /> 
-                                                <br/>
-                                                <SeasonalDemandBarChart />
-                                                <br/>
-                                                <SeasonalDemandPieChart/> */}
-                                            </>
-                                        }
-                                    />
-                                    <Route
-                                        path="*"
-                                        element={<Navigate to="/dashboard/home" />} // Added this line correctly
-                                    />
+                                    <Route path="home" element={<PatientHome />} />
+                                    <Route path="home/patient-profile" element={<PatientProfile />} />
+                                    <Route path="home/make-appointments" element={ <MakeAppointment/>} />
+                                    <Route path="patient-history" element={<> {/* Your content here */} </>} />
+                                    <Route path="my-appointments" element={<> {/* Your content here */} </>} />
+                                    <Route path="*" element={<Navigate to="/dashboard/home" />} />
                                 </Routes>
                             </main>
                         </div>
@@ -82,7 +44,6 @@ function App() {
                     )}
                 />
 
-                {/* Redirect to login for any unknown paths */}
                 <Route path="*" element={<Navigate to="/login" />} />
             </Routes>
         </BrowserRouter>

@@ -1,11 +1,12 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Typography } from "@material-tailwind/react";
 
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
   const navigate = useNavigate();
+  const location = useLocation(); // Get the current location
 
   const handleOpen = () => {
     setDropdownOpen((prev) => !prev);
@@ -15,6 +16,9 @@ export function Navbar() {
     localStorage.removeItem("token");
     navigate("/login");
   };
+
+  // Function to check if the link is active
+  const isActiveLink = (path) => location.pathname === path;
 
   return (
     <nav className="bg-gray-200 fixed top-0 left-0 w-full z-50 shadow-md">
@@ -54,19 +58,16 @@ export function Navbar() {
             </button>
             {dropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
-                <Link to="/dashboard/home" className="block px-4 py-2 text-black hover:bg-gray-100">
-                  Make Appointments
+                <Link to="/dashboard/home" className={`block px-4 py-2 text-black hover:bg-gray-100 ${isActiveLink('/dashboard/home') ? 'border-b-2 border-blue-500' : ''}`}>
+                  Home
                 </Link>
-                <Link
-                  to="/dashboard/customer-segmentation"
-                  className="block px-4 py-2 text-black hover:bg-gray-100"
-                >
+                <Link to="/dashboard/patient-history" className={`block px-4 py-2 text-black hover:bg-gray-100 ${isActiveLink('/dashboard/patient-history') ? 'border-b-2 border-blue-500' : ''}`}>
                   Patient History
                 </Link>
-                <Link
-                  to="/dashboard/customer-demand-analysis"
-                  className="block px-4 py-2 text-black hover:bg-gray-100"
-                >
+                <Link to="/dashboard/home/make-appointments" className={`block px-4 py-2 text-black hover:bg-gray-100 ${isActiveLink('/dashboard/make-appointments') ? 'border-b-2 border-blue-500' : ''}`}>
+                  Make Appointments
+                </Link>
+                <Link to="/dashboard/my-appointments" className={`block px-4 py-2 text-black hover:bg-gray-100 ${isActiveLink('/dashboard/my-appointments') ? 'border-b-2 border-blue-500' : ''}`}>
                   My Appointments
                 </Link>
               </div>
@@ -74,7 +75,7 @@ export function Navbar() {
           </div>
 
           {/* Profile Link */}
-          <Link to="/profile" className="text-black flex items-center">
+          <Link to="/dashboard/home/patient-profile" className={`text-black flex items-center ${isActiveLink('/dashboard/home/patient-profile') ? 'border-b-2 border-blue-500' : ''}`}>
             Profile
           </Link>
 
@@ -91,22 +92,16 @@ export function Navbar() {
       {/* Mobile Menu */}
       {open && (
         <div className="flex flex-col items-center md:hidden bg-gray-200 p-4">
-          <Link to="/dashboard/home" className="block w-full text-left px-4 py-2 text-black hover:bg-gray-100">
+          <Link to="/dashboard/home" className={`block w-full text-left px-4 py-2 text-black hover:bg-gray-100 ${isActiveLink('/dashboard/home') ? 'border-b-2 border-blue-500' : ''}`}>
             Make Appointments
           </Link>
-          <Link
-            to="/dashboard/customer-segmentation"
-            className="block w-full text-left px-4 py-2 text-black hover:bg-gray-100"
-          >
+          <Link to="/dashboard/home/patient-history" className={`block w-full text-left px-4 py-2 text-black hover:bg-gray-100 ${isActiveLink('/dashboard/patient-history') ? 'border-b-2 border-blue-500' : ''}`}>
             Patient History
           </Link>
-          <Link
-            to="/dashboard/customer-demand-analysis"
-            className="block w-full text-left px-4 py-2 text-black hover:bg-gray-100"
-          >
+          <Link to="/dashboard/home/my-appointments" className={`block w-full text-left px-4 py-2 text-black hover:bg-gray-100 ${isActiveLink('/dashboard/my-appointments') ? 'border-b-2 border-blue-500' : ''}`}>
             My Appointments
           </Link>
-          <Link to="/profile" className="block w-full text-left px-4 py-2 text-black hover:bg-gray-100">
+          <Link to="/dashboard/home/patient-profile" className={`block w-full text-left px-4 py-2 text-black hover:bg-gray-100 ${isActiveLink('/dashboard/home/patient-profile') ? 'border-b-2 border-blue-500' : ''}`}>
             Profile
           </Link>
           <button
