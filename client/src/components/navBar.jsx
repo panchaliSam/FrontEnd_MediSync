@@ -61,13 +61,13 @@ export function Navbar() {
                 <Link to="/dashboard/home" className={`block px-4 py-2 text-black hover:bg-gray-100 ${isActiveLink('/dashboard/home') ? 'border-b-2 border-blue-500' : ''}`}>
                   Home
                 </Link>
-                <Link to="/dashboard/patient-history" className={`block px-4 py-2 text-black hover:bg-gray-100 ${isActiveLink('/dashboard/patient-history') ? 'border-b-2 border-blue-500' : ''}`}>
+                <Link to="/dashboard/home/patient-history" className={`block px-4 py-2 text-black hover:bg-gray-100 ${isActiveLink('/dashboard/patient-history') ? 'border-b-2 border-blue-500' : ''}`}>
                   Patient History
                 </Link>
                 <Link to="/dashboard/home/make-appointments" className={`block px-4 py-2 text-black hover:bg-gray-100 ${isActiveLink('/dashboard/make-appointments') ? 'border-b-2 border-blue-500' : ''}`}>
                   Make Appointments
                 </Link>
-                <Link to="/dashboard/my-appointments" className={`block px-4 py-2 text-black hover:bg-gray-100 ${isActiveLink('/dashboard/my-appointments') ? 'border-b-2 border-blue-500' : ''}`}>
+                <Link to="/dashboard/home/my-appointments" className={`block px-4 py-2 text-black hover:bg-gray-100 ${isActiveLink('/dashboard/my-appointments') ? 'border-b-2 border-blue-500' : ''}`}>
                   My Appointments
                 </Link>
               </div>
