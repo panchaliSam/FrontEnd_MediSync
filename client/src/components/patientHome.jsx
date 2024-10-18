@@ -41,7 +41,7 @@ export function PatientHome() {
         </Link>
 
         {/* Card for Patient History */}
-        <Link to="/dashboard/patient-history" className="w-full max-w-xs">
+        <Link to="/dashboard/home/patient-history" className="w-full max-w-xs">
           <Card className="h-60 bg-blue-500 text-white hover:bg-blue-600 cursor-pointer">
             <CardBody className="flex flex-col items-center justify-center h-full p-6">
               <ClipboardDocumentIcon className="h-12 w-12 mb-2" />
@@ -53,7 +53,7 @@ export function PatientHome() {
         </Link>
 
         {/* Card for My Appointments */}
-        <Link to="/dashboard/my-appointemnets" className="w-full max-w-xs">
+        <Link to="/dashboard/home/my-appointments" className="w-full max-w-xs">
           <Card className="h-60 bg-blue-500 text-white hover:bg-blue-600 cursor-pointer">
             <CardBody className="flex flex-col items-center justify-center h-full p-6">
               <ClockIcon className="h-12 w-12 mb-2" />

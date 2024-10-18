@@ -5,7 +5,9 @@ import Login from './components/login';
 import Register from './components/register';
 import PatientRegister from './components/patientAdd';
 import PatientProfile from './components/patientProfile';
-import MakeAppointment from './components/patientMyAppointments';
+import MakeAppointment from './components/makeAppointments';
+import MyAppointments from './components/myAppointments';
+import PatientHistory from './components/patientHistory'
 
 function App() {
     const isAuthenticated = () => {
@@ -33,8 +35,8 @@ function App() {
                                     <Route path="home" element={<PatientHome />} />
                                     <Route path="home/patient-profile" element={<PatientProfile />} />
                                     <Route path="home/make-appointments" element={ <MakeAppointment/>} />
-                                    <Route path="patient-history" element={<> {/* Your content here */} </>} />
-                                    <Route path="my-appointments" element={<> {/* Your content here */} </>} />
+                                    <Route path="home/patient-history" element={ <PatientHistory/>} />
+                                    <Route path="home/my-appointments" element={<MyAppointments/>} />
                                     <Route path="*" element={<Navigate to="/dashboard/home" />} />
                                 </Routes>
                             </main>

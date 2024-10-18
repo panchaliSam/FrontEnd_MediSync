@@ -81,7 +81,7 @@ export function MultiLevelSidebar() {
                     <Typography color="black">Patient History</Typography> {/* Changed color to white */}
                   </ListItem>
                 </Link>
-                <Link to="/dashboard/customer-demand-analysis" className="block">
+                <Link to="/dashboard/home/my-appointemnets" className="block">
                   <ListItem>
                     <ListItemPrefix>
                       <ClockIcon className="h-5 w-5" /> {/* Icon for My Appointments */}

@@ -33,7 +33,41 @@ export default function PatientAdd() {
     }, [navigate]);
 
     const handleChange = (e) => {
-        setPatientData({ ...patientData, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+
+        // Handle auto-capitalization and validation
+        let newValue = value;
+
+        // Allow only specific characters
+        if (name === 'patient_name' || name === 'emergency_relation' || name === 'allergy') {
+            newValue = newValue.replace(/[^a-zA-Z.' ]/g, ''); // Allow letters, periods, apostrophes, and spaces
+            // Auto-capitalize first letter of each word
+            newValue = newValue.replace(/\b\w/g, char => char.toUpperCase());
+        }
+
+        // Validate contact number inputs
+        if (name === 'contact_no' || name === 'emergency_contact_no') {
+            newValue = newValue.replace(/[^0-9]/g, ''); // Allow only digits
+            if (newValue.length > 10) {
+                newValue = newValue.slice(0, 10); // Limit to 10 digits
+            }
+        }
+
+        setPatientData(prevData => ({ ...prevData, [name]: newValue }));
+
+        // Calculate age when DOB changes
+        if (name === 'dob') {
+            const dobDate = new Date(value);
+            const today = new Date();
+            const calculatedAge = today.getFullYear() - dobDate.getFullYear();
+            const monthDifference = today.getMonth() - dobDate.getMonth();
+            if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < dobDate.getDate())) {
+                setPatientData(prevData => ({ ...prevData, age: calculatedAge - 1 })); // Adjust age if necessary
+            } else {
+                setPatientData(prevData => ({ ...prevData, age: calculatedAge }));
+            }
+        }
+
         setError(''); // Clear error on input change
     };
 
@@ -103,15 +137,7 @@ export default function PatientAdd() {
                         name="patient_name"
                         value={patientData.patient_name}
                         onChange={handleChange}
-                    />
-                    <Input
-                        label="Age"
-                        size="lg"
-                        name="age"
-                        type="number"
-                        value={patientData.age}
-                        onChange={handleChange}
-                    />
+                    />                   
                     <Input
                         label="Date of Birth"
                         size="lg"
@@ -119,6 +145,14 @@ export default function PatientAdd() {
                         type="date"
                         value={patientData.dob}
                         onChange={handleChange}
+                    />
+                    <Input
+                        label="Age"
+                        size="lg"
+                        name="age"
+                        type="number"
+                        value={patientData.age}
+                        readOnly // Make age input read-only since it is calculated automatically
                     />
                     <Input
                         label="Contact Number"
