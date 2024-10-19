@@ -29,13 +29,13 @@ export default function Login() {
 
     const loginUser = async (e) => {
         e.preventDefault();
-
+    
         // Validate input
         if (!loginData.username || !loginData.password) {
             setError('Username and Password are required.');
             return;
         }
-
+    
         try {
             const response = await axios.post(`http://localhost:8080/CSSE_MediSync/users?action=login`, {
                 username: loginData.username,
@@ -45,14 +45,21 @@ export default function Login() {
                     'Content-Type': 'application/json'
                 }
             });
-
-            const { token } = response.data;
+    
+            // Extract both token and userId from the response
+            const { token, userId } = response.data;
+    
+            // Store token and userId in localStorage
             localStorage.setItem('token', token);
+            localStorage.setItem('userId', userId);
+    
+            // Navigate to dashboard after successful login
             navigate('/dashboard/home');
         } catch (error) {
             setError(error.response?.data?.error || "Login Unsuccessful!");
         }
     };
+    
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-white px-4">
@@ -63,7 +70,7 @@ export default function Login() {
                 WELCOME!!
             </Typography>
             <Typography variant="small" className="text-center text-gray-500 mb-6">
-                MediSync Hospital Portal
+                MediSync Patient Portal
             </Typography>
             <div className="w-full max-w-sm md:max-w-md lg:max-w-lg"> {/* Media query for responsiveness */}
                 <div className="flex flex-col gap-4">
