@@ -63,7 +63,7 @@ export default function Login() {
                 WELCOME!!
             </Typography>
             <Typography variant="small" className="text-center text-gray-500 mb-6">
-                MediSync Patient Portal
+                MediSync Hospital Portal
             </Typography>
             <div className="w-full max-w-sm md:max-w-md lg:max-w-lg"> {/* Media query for responsiveness */}
                 <div className="flex flex-col gap-4">

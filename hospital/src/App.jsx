@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { MultiLevelSidebar } from './components/sideNavBar';
 import { HospitalHome } from './components/hospitalHome';
+import {Statistics} from './components/statistics';
 import Login from './components/login'; 
 import Register from './components/register';
 import HospitalRegister from './components/hospitalAdd';
@@ -37,6 +38,7 @@ function App() {
                                     <Route path="home/appointments" element={ <MakeAppointment/>} />
                                     <Route path="home/patient-history" element={ <PatientHistory/>} />
                                     <Route path="home/doctors" element={<HospitalDoctors/>} />
+                                    <Route path="home/statistics" element={<Statistics/>} />
                                     <Route path="*" element={<Navigate to="/dashboard/home" />} />
                                 </Routes>
                             </main>

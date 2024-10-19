@@ -14,6 +14,7 @@ import {
   CalendarIcon,           // Icon for Make Appointments
   ClipboardDocumentIcon,   // Icon for Patient History
   UserIcon,                // Icon for Doctors
+  ChartBarIcon,            // Icon for Statistics
 } from "@heroicons/react/24/solid";
 
 export function MultiLevelSidebar() {
@@ -70,6 +71,16 @@ export function MultiLevelSidebar() {
                 <UserIcon className="h-5 w-5" /> {/* Icon for Doctors */}
               </ListItemPrefix>
               <Typography className="font-normal">Doctors</Typography>
+            </ListItem>
+          </NavLink>
+
+          {/* Statistics Link */}
+          <NavLink to="/dashboard/home/statistics" className={({ isActive }) => `block ${isActive ? 'bg-blue-500 text-white' : 'text-black'}`}>
+            <ListItem>
+              <ListItemPrefix>
+                <ChartBarIcon className="h-5 w-5" /> {/* Icon for Statistics */}
+              </ListItemPrefix>
+              <Typography className="font-normal">Statistics</Typography>
             </ListItem>
           </NavLink>
 
